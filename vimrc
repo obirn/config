@@ -7,12 +7,6 @@ set encoding=utf-8 fileencodings=
 " enable syntax highlighting
 syntax on
 
-" Shows matching brackets
-set showmatch 
-
-" set visible trailing characters
-set list listchars=tab:»\ ,trail:·
-
 " set numbers on the left
 set number
 
@@ -20,7 +14,6 @@ set number
 set cc=80
 
 " indentation
-filetype plugin indent on
 set autoindent
 set smartindent
 
@@ -45,9 +38,7 @@ noremap <leader>7 7gt
 noremap <leader>8 8gt
 noremap <leader>9 9gt
 noremap <leader>0 :tablast<cr>
-
-" c braces setup
-inoremap {<CR> {<CR>}<Esc>ko
+nnoremap <leader>n :NERDTreeFocus<CR>
 
 " reduce latency when escaping
 set ttimeoutlen=10
@@ -55,19 +46,14 @@ set ttimeoutlen=10
 " makefiles settings
 autocmd Filetype make setlocal noexpandtab
 
-" c files
-autocmd BufRead,BufNewFile *.c,*.h setlocal cinoptions+=:0 " case statement indent fix
-autocmd BufRead,BufNewFile *.c,*.h setlocal comments=s:/**,mb:**,ex:*/,s:/*,mb:**,ex:*/
-
 packadd termdebug
 
 set backspace=indent,eol,start
 
+" PLUGINS
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-" Plugin settings
-"
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -79,7 +65,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 " Plugin list:
-Plugin 'nanotech/jellybeans.vim'
+Plugin 'jonathanfilip/vim-lucius'
 Plugin 'preservim/nerdtree'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -90,7 +76,8 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 
 " Color scheme
-colorscheme jellybeans
+set background=dark
+colorscheme lucius
 
 " Rainbow parenthesis
 let g:rainbow_active = 1
